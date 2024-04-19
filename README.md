@@ -1,27 +1,30 @@
-# Folder structure
+# Crypto Mining Simulator
+
+A crypto mining simulator game, based on my old projects from Scratch. Coming soon.
+
+## Kaboom.js things
 
 - `src` - source code for your kaboom project
 - `www` - distribution folder, contains your index.html, built js bundle and static assets
 
-
-## Development
+### Development
 
 ```sh
-$ npm run dev
+npm run dev
 ```
 
 will start a dev server at http://localhost:8000
 
-## Distribution
+### Distribution
 
 ```sh
-$ npm run build
+npm run build
 ```
 
 will build your js files into `www/main.js`
 
 ```sh
-$ npm run bundle
+npm run bundle
 ```
 
 will build your game and package into a .zip file, you can upload to your server or itch.io / newground etc.

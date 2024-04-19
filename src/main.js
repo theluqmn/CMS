@@ -3,6 +3,7 @@ import kaboom from "kaboom"
 var btc = 0; var usd = 0
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 const k = kaboom()
 
 k.scene("mining", () => {
