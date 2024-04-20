@@ -12,6 +12,12 @@ let user_data = {
 			"lifespan": 220,
 			"price": 1099
 		},
+		{
+			"company": "Nvidia",
+			"name": "GeForce RTX 4080 Super",
+			"hashrate": 120500,
+			"power": 400
+		}
 	],
 }
 
@@ -48,8 +54,11 @@ function execute() {
 	// Mining calculation script
 	(async () => {
 		while (true) {
-				
-			btc += 0.05;
+			for (let i = 0; i < user_data.gpu.length; i++) {
+				const gpuIndex = user_data.gpu[i]
+				btc += (gpuIndex.hashrate / 250000);
+			}
+
 			usd += 1.356;
 			bar.btcText.text = `BTC: ${btc.toFixed(3)}`
 			bar.usdText.text = `USD: ${usd.toFixed(3)}`
@@ -71,7 +80,7 @@ k.scene("mining", () => { // Mining
 	k.setBackground(0,0,0)
 
 	bar = new topBar();
-	
+
 	execute()
 });
 
