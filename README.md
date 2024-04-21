@@ -1,6 +1,6 @@
 # CMS24 - Crypto Mining Simulator
 
-A Kaboom.js-based crypto mining simulator game. Not realistic.
+My JavaScript side project, a Kaboom.js-based crypto mining simulator game. Not realistic.
 
 ## How it works
 
@@ -20,6 +20,6 @@ I am mostly active on Discord (luqmanually) and [Instagram](https://instagram.co
 
 Please remember that this project does **not** resemble or is related to any real-life mining activities. It is a fun side-project of mine, and is purely for entertainment. I am not associated with any Bitcoin-related entities, or Nvidia.
 
-#### Currently, this project is in Alpha.
+#### Currently, this project is in Alpha
 
 Alpha versions are based on the date the version was released on. Example: `20.4.24` for Alpha version released on 20th April 2024. Do note that this is on my local timezone, GMT+8.
