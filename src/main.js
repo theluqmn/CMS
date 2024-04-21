@@ -155,38 +155,41 @@ class topBar{
 
 function execute() {
 	(async () => {
-		while (true) {
-			miningHash = 0; btcMiningRate = 0;
-			powerConsumption = 0;
-
-			for (let i = 0; i < user_data.gpu.length; i++) {
-				// Mining
-				const gpuIndex = user_data.gpu[i];
-				btc += (gpuIndex.hashrate / miningDifficulty);
-				btcMiningRate += (gpuIndex.hashrate / miningDifficulty);
-				
-				miningHash += gpuIndex.hashrate;
-				
-				// Power consumption
-				powerConsumption += gpuIndex.power;
-			};
-
-			// Statistics
-			var mineStats = statistics.mining;
-
-			mineStats.AlltimeBtcMined += btcMiningRate;
-			mineStats.miningRate.history.push(btcMiningRate);
-
-			mineStats.btcHashrate.push(miningHash);
-			mineStast.difficulty.push(miningDifficulty);
-
-			statistics.power.AlltimePowerConsumed += powerConsumption;
-			statistics.power.powerConsumption.history.push(powerConsumption);
-
-			await delay(1000);
+	  while (true) {
+		miningHash = 0; btcMiningRate = 0;
+		powerConsumption = 0;
+  
+		for (let i = 0; i < user_data.gpu.length; i++) {
+		  // Mining
+		  const gpuIndex = user_data.gpu[i];
+		  btcMiningRate += (gpuIndex.hashrate / miningDifficulty);
+		  btc+= btcMiningRate;
+  
+		  miningHash += gpuIndex.hashrate;
+  
+		  // Power consumption
+		  powerConsumption += gpuIndex.power;
 		};
+  
+		// Statistics
+		const mineStats = statistics.mining || {};
+		mineStats.AlltimeBtcMined = (mineStats.AlltimeBtcMined || 0) + btcMiningRate;
+		mineStats.btcHashrate.push(miningHash);
+		mineStats.miningRate.push(btcMiningRate);
+		mineStats.difficulty.push(miningDifficulty);
+  
+		const powerStats = statistics.power || {};
+		powerStats.AlltimePowerConsumed = (powerStats.AlltimePowerConsumed || 0) + powerConsumption;
+		powerStats.powerConsumption.push(powerConsumption);
+  
+		statistics.mining = mineStats;
+		statistics.power = powerStats;
+  
+		await delay(1000);
+	  };
 	})();
-};
+  }
+  
 
 function inputs() {
 	onKeyPress("q" || "Q", () => {
