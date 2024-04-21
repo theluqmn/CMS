@@ -9,6 +9,7 @@ var powerConsumption = 0;
 var btcExchangeRate = 51000;
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const k = kaboom();
 
 // Number formatting function
 function NumRound(number) {
@@ -72,8 +73,6 @@ let statistics = {
 	}
 };
 
-
-const k = kaboom();
 class topBar{
 	// Command keys
 
@@ -116,15 +115,25 @@ class topBar{
 	
 	btcText = k.add([
 		k.text(""),
-		k.pos(340, 60),
+		k.pos(330, 60),
 	]);
 	
 	usdText = k.add([
 		k.text(""),
-		k.pos(640, 60),
+		k.pos(630, 60),
 	]);
 
 	// Exchange group
+	exchangeFrame = k.add([
+		k.rect(400, 50),
+		k.pos(930, 50),
+		k.color(50, 50, 50)
+	]);
+
+	exchangeRateText = k.add([
+		k.text("BTC-USD: 510.58k"),
+		k.pos(940, 60)
+	]);
 
 	// Refresh the text
 	refreshText = function(currentScene){
@@ -163,18 +172,16 @@ function execute() {
 			};
 
 			// Statistics
-			//var mineStats = statistics.mining;
+			var mineStats = statistics.mining;
 
-			//mineStats.AlltimeBtcMined += btcMiningRate;
-			//mineStats.miningRate.history.push(btcMiningRate);
+			mineStats.AlltimeBtcMined += btcMiningRate;
+			mineStats.miningRate.history.push(btcMiningRate);
 
-			//mineStats.btcHashrate.push(miningHash);
-			//mineStast.difficulty.push(miningDifficulty);
+			mineStats.btcHashrate.push(miningHash);
+			mineStast.difficulty.push(miningDifficulty);
 
-			//statistics.power.AlltimePowerConsumed += powerConsumption;
-			//statistics.power.powerConsumption.history.push(powerConsumption);
-			
-			usd += 1.356;
+			statistics.power.AlltimePowerConsumed += powerConsumption;
+			statistics.power.powerConsumption.history.push(powerConsumption);
 
 			await delay(1000);
 		};
@@ -197,6 +204,7 @@ function inputs() {
 
 execute();
 
+// Mining page
 k.scene("mining", () => {
 	k.setBackground(0,0,0);
 
@@ -234,6 +242,7 @@ k.scene("mining", () => {
 	});
 });
 
+// Wallet page
 k.scene("wallet", () => {
 	k.setBackground(0, 0, 0);
 
@@ -259,6 +268,7 @@ k.scene("wallet", () => {
 
 });
 
+// Exchange page
 k.scene("exchange", () => {
 	k.setBackground(0, 0, 0);
 
