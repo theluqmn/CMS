@@ -6,6 +6,30 @@ var miningDifficulty = 1000000
 
 var powerConsumption = 0;
 
+var btcExchangeRate = 51000;
+
+// Number rounding function
+function NumRound(number) {
+    if (number >= 1000 && number < 1000000) {
+        // Thousa
+        number = (number / 1000).toFixed(3)
+        number = `${number}K`
+        return number
+
+    } else if (number >= 1000000 && number < 1000000000) {
+        number = (number / 1000000).toFixed(3)
+        number = `${number}M`
+        return number
+
+    } else if (number >= 1000000000 && number < 1000000000000) {
+
+        number = (number / 1000000000).toFixed(3)
+        number = `${number}B`
+        return number
+    }
+}
+
+// User data
 let user_data = {
 	"gpu": [
 		{
@@ -28,6 +52,7 @@ let user_data = {
 
 let statistics = { // Dictionary for storing game statistics
 	"mining": {
+		"AlltimeBtcMined": 0,
 		"btcHashrate": {
 			"highest": 0, "lowest": 0,
 			"history": [],
@@ -50,6 +75,13 @@ let statistics = { // Dictionary for storing game statistics
 				"history": [],
 			},
 		},
+	},
+	"power": {
+		"AlltimePowerConsumed": 0,
+		"powerConsumption": {
+			"highest": 0, "lowest": 0,
+			"history": [],
+		}
 	}
 }
 
@@ -57,37 +89,45 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const k = kaboom()
 class topBar{
+	// Command keys
+	commandText = k.add([
+		k.text("[Q] Mining | [W] Wallet | [E] Exchange | [R] Shop | [T] Inventory | [Y] Settings"),
+		k.pos(0,10),
+		k.anchor("topleft"),
+		k.color(255, 255, 255)
+	])
+
 	// Mining group
 	miningFrame = k.add([
 		k.rect(300, 50),
-		k.pos(10,10),
+		k.pos(10, 50),
 		k.anchor("topleft"),
-		k.color(100,100,100)
+		k.color(50, 50, 50)
 	])
 
 	miningRateText = k.add([
 		k.text(""),
-		k.pos(20,20),
+		k.pos(20, 60),
 		k.anchor("topleft")
 	])
 
 	// Wallet group
 	walletFrame = k.add([
-		k.rect(600,50),
-		k.pos(320, 10),
+		k.rect(600, 50),
+		k.pos(320, 50),
 		k.anchor("topleft"),
-		k.color(100,100,100)
+		k.color(50, 50, 50)
 	]);
 	
 	btcText = k.add([
 		k.text(""),
-		k.pos(340,20),
+		k.pos(340, 60),
 		k.anchor("topleft")
 	]);
 	
 	usdText = k.add([
 		k.text(""),
-		k.pos(640,20),
+		k.pos(640, 60),
 		k.anchor("topleft")
 	]);
 
@@ -95,36 +135,33 @@ class topBar{
 }
 
 function execute() {
-	// Mining calculation script
 	(async () => {
 		while (true) {
 			miningHash = 0; btcMiningRate = 0
+			powerConsumption = 0;
+
 			for (let i = 0; i < user_data.gpu.length; i++) {
+				// Mining
 				const gpuIndex = user_data.gpu[i]
 				btc += (gpuIndex.hashrate / miningDifficulty);
 				btcMiningRate += (gpuIndex.hashrate / miningDifficulty)
+				
 				miningHash += gpuIndex.hashrate
+				
+				// Power consumption
+				powerConsumption += gpuIndex.power
 			}
 
+			// Statistics
+			statistics.mining.AlltimeBtcMined += btcMiningRate
+			statistics.power.AlltimePowerConsumed += powerConsumption
+			
 			usd += 1.356;
 			bar.miningRateText.text = `${miningHash.toFixed(3)}`
 			bar.btcText.text = `BTC: ${btc.toFixed(3)}`
 			bar.usdText.text = `USD: ${usd.toFixed(3)}`
 			console.log(`BTC: ${btc}`)
 			await delay(1000);
-		}
-	})();
-
-	// Energy calculation script
-	(async () => {
-		while (true) {
-			powerConsumption = 0
-			for (let i = 0; i < user_data.gpu.length; i++) {
-				const gpuIndex = user_data.gpu[i]
-				powerConsumption += gpuIndex.power
-			}
-
-			await delay(1000)
 		}
 	})();
 }
@@ -137,12 +174,19 @@ k.scene("mining", () => { // Mining
 
 	const powerConsumptionText = k.add([
 		k.text(""),
-		k.pos(500,500),
+		k.pos(500, 500),
+		k.anchor("topleft")
+	])
+
+	const powerConsumptionAlltimeText = k.add([
+		k.text(""),
+		k.pos(500, 550),
 		k.anchor("topleft")
 	])
 	
 	k.onUpdate(() => {
-		powerConsumptionText.text = `Power consumption: ${powerConsumption}`
+		powerConsumptionText.text = `Power consumption: ${powerConsumption}W`
+		powerConsumptionAlltimeText.text = `All-time power consumption: ${statistics.power.AlltimePowerConsumed}W`
 	})
 	
 	execute()
