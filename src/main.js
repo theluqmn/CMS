@@ -8,8 +8,6 @@ var powerConsumption = 0;
 
 var btcExchangeRate = 51000;
 
-var currentScene = "home"; var indexScene = 0;
-
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Number formatting function
@@ -60,89 +58,70 @@ let user_data = {
 let statistics = {
 	"mining": {
 		"AlltimeBtcMined": 0,
-		"btcHashrate": {
-			"highest": 0, "lowest": 0,
-			"history": [],
-		},
-		"miningRate": {
-			"highest": 0, "lowest": 0,
-			"history": [],
-		},
-		"difficulty": {
-			"highest": 0, "lowest": 0,
-			"history": [],
-		}
+		"btcHashrate": [],
+		"miningRate": [],
+		"difficulty": []
 	},
 	"exchange": {
 		"transactions": [],
-		"btc": {
-			"most-owned": 0,
-			"rate" : {
-				"highest": 0, "lowest": 0,
-				"history": [],
-			},
-		},
+		"btcRate": []
 	},
 	"power": {
 		"AlltimePowerConsumed": 0,
-		"powerConsumption": {
-			"highest": 0, "lowest": 0,
-			"history": [],
-		}
+		"powerConsumption": []
 	}
-}
+};
 
 
 const k = kaboom();
 class topBar{
 	// Command keys
 
-	commandTextMining = k.add([
+	miningSceneCommandText = k.add([
 		k.text("[Q] Mining"),
 		k.pos(0, 10),
-		k.color(255, 255, 255),
-		k.anchor("topleft")
+		k.color(150, 150, 150),
 	]);
 
-	commandTextWallet = k.add([
+	walletSceneCommandText = k.add([
 		k.text("[W] Wallet"),
 		k.pos(250, 10),
-		k.color(255, 255, 255),
-		k.anchor("topleft")
+		k.color(150, 150, 150),
 	]);
+
+	exchangeSceneCommandText = k.add([
+		k.text("[E] Exchange"),
+		k.pos(500, 10),
+		k.color(150, 150, 150),
+	])
 
 	// Mining group
 	miningFrame = k.add([
 		k.rect(300, 50),
 		k.pos(10, 50),
-		k.anchor("topleft"),
 		k.color(50, 50, 50)
 	]);
 
 	miningRateText = k.add([
 		k.text(""),
 		k.pos(20, 60),
-		k.anchor("topleft")
 	]);
 
 	// Wallet group
 	walletFrame = k.add([
 		k.rect(600, 50),
 		k.pos(320, 50),
-		k.anchor("topleft"),
 		k.color(50, 50, 50)
 	]);
 	
 	btcText = k.add([
 		k.text(""),
 		k.pos(340, 60),
-		k.anchor("topleft")
 	]);
 	
 	usdText = k.add([
 		k.text(""),
 		k.pos(640, 60),
-		k.anchor("topleft")
 	]);
 
 	// Exchange group
@@ -154,10 +133,14 @@ class topBar{
 		bar.usdText.text = `USD: ${NumRound(usd)}`;
 
 		if (currentScene == "mining") {
-			bar.commandTextMining.color = k.rgb(195, 255, 220);
+			bar.miningSceneCommandText.color = k.rgb(255, 255, 255);
+
 		} else if (currentScene == "wallet") {
-			bar.commandTextWallet.color = k.rgb(195, 255, 220);
-		};
+			bar.walletSceneCommandText.color = k.rgb(255, 255, 255);
+
+		} else if (currentScene == "exchange") {
+			bar.exchangeSceneCommandText.color = k.rgb(255, 255, 255)
+		}
 	};
 }
 
@@ -180,14 +163,21 @@ function execute() {
 			};
 
 			// Statistics
-			statistics.mining.AlltimeBtcMined += btcMiningRate;
-			statistics.power.AlltimePowerConsumed += powerConsumption;
+			//var mineStats = statistics.mining;
+
+			//mineStats.AlltimeBtcMined += btcMiningRate;
+			//mineStats.miningRate.history.push(btcMiningRate);
+
+			//mineStats.btcHashrate.push(miningHash);
+			//mineStast.difficulty.push(miningDifficulty);
+
+			//statistics.power.AlltimePowerConsumed += powerConsumption;
+			//statistics.power.powerConsumption.history.push(powerConsumption);
 			
 			usd += 1.356;
-			console.log(`BTC: ${btc}`);
 
 			await delay(1000);
-		}
+		};
 	})();
 };
 
@@ -199,53 +189,111 @@ function inputs() {
 	onKeyPress("w" || "W", () => {
 		k.go("wallet");
 	});
+
+	onKeyPress("e" || "E", () => {
+		k.go("exchange");
+	});
 };
 
 execute();
 
-k.scene("mining", () => { // Mining 
-	//Kaboom stuff
+k.scene("mining", () => {
 	k.setBackground(0,0,0);
 
 	bar = new topBar();
 
-	const powerConsumptionText = k.add([
+	const hashrateMiningText = k.add([
 		k.text(""),
-		k.pos(500, 500),
-		k.anchor("topleft")
+		k.pos(10, 200)
 	]);
 
-	const powerConsumptionAlltimeText = k.add([
+	const btcMiningRateMiningText = k.add([
 		k.text(""),
-		k.pos(500, 550),
-		k.anchor("topleft")
+		k.pos(10, 250)
+	]);
+
+	const btcAllTimeMiningText = k.add([
+		k.text(""),
+		k.pos(10, 300)
+	]);
+
+	const powerConsumptionMiningText = k.add([
+		k.text(""),
+		k.pos(10, 500)
 	]);
 
 	inputs();
-
 	k.onUpdate(() => {
 		bar.refreshText("mining");
+
+		hashrateMiningText.text = `Hashrate: ${NumRound(miningHash)}/s`
+		btcMiningRateMiningText.text = `BTC mining rate: ${NumRound(btcMiningRate)}/s`
+		btcAllTimeMiningText.text = `Total mined BTC: ${NumRound(statistics.mining.AlltimeBtcMined)}`
 		
-		powerConsumptionText.text = `Power consumption: ${NumRound(powerConsumption)}W`;
-		powerConsumptionAlltimeText.text = `All-time power consumption: ${NumRound(statistics.power.AlltimePowerConsumed)}W`;
+		powerConsumptionMiningText.text = `Power consumption: ${NumRound(powerConsumption)}W`;
 	});
 });
 
 k.scene("wallet", () => {
-
 	k.setBackground(0, 0, 0);
 
 	bar = new topBar();
 	
-	inputs();
+	const usdWalletText = k.add([
+		k.text(""),
+		k.pos(10, 200)
+	]);
 
+	const btcWalletText = k.add([
+		k.text(""),
+		k.pos(10, 250)
+	]);
+
+	inputs();
 	k.onUpdate(() => {
 		bar.refreshText("wallet");
+
+		usdWalletText.text = `USD: ${NumRound(usd)}`;
+		btcWalletText.text = `BTC: ${NumRound(btc)}`
 	});
 
 });
 
-k.scene("exchange", () => {});
+k.scene("exchange", () => {
+	k.setBackground(0, 0, 0);
+
+	bar = new topBar();
+
+	const exchangeRateExchangeText = k.add([
+		k.text(""),
+		k.pos(10, 200)
+	]);
+
+	const btcValueExchangeText = k.add([
+		k.text(""),
+		k.pos(10, 250)
+	]);
+
+	const exchangeBtcExchangeText = k.add([
+		k.text("Press space to exchange (all)"),
+		k.pos(10, 800),
+		k.color(0, 241, 18),
+		k.anchor("botleft")
+	]);
+
+	onKeyPress("space", () => {
+		usd += (btc * btcExchangeRate);
+		btc = 0;
+	});
+
+	inputs();
+	k.onUpdate(() => {
+		bar.refreshText("exchange");
+
+		exchangeRateExchangeText.text = `BTC-USD Exchange rate: USD ${NumRound(btcExchangeRate)}`
+		btcValueExchangeText.text = `Your BTC value: USD ${NumRound(btc * btcExchangeRate)}`
+	});
+});
 
 k.scene("shop", () => {});
 
