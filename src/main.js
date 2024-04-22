@@ -131,7 +131,7 @@ class topBar{
 	]);
 
 	exchangeRateText = k.add([
-		k.text("BTC-USD: 510.58k"),
+		k.text(""),
 		k.pos(940, 60)
 	]);
 
@@ -140,6 +140,7 @@ class topBar{
 		bar.miningRateText.text = `${NumRound(miningHash)} Hash`;
 		bar.btcText.text = `BTC: ${NumRound(btc)}`;
 		bar.usdText.text = `USD: ${NumRound(usd)}`;
+		bar.exchangeRateText.text = `BTC-USD: ${NumRound(btcExchangeRate)}`
 
 		if (currentScene == "mining") {
 			bar.miningSceneCommandText.color = k.rgb(255, 255, 255);
@@ -163,13 +164,13 @@ function execute() {
 		  // Mining
 		  const gpuIndex = user_data.gpu[i];
 		  btcMiningRate += (gpuIndex.hashrate / miningDifficulty);
-		  btc+= btcMiningRate;
-  
+		  
 		  miningHash += gpuIndex.hashrate;
-  
+		  
 		  // Power consumption
 		  powerConsumption += gpuIndex.power;
 		};
+		btc+= btcMiningRate;
   
 		// Statistics
 		const mineStats = statistics.mining || {};
