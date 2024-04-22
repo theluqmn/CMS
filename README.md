@@ -1,4 +1,4 @@
-# CMS24 - Crypto Mining Simulator
+# CMS - Crypto Mining Simulator
 
 My JavaScript side project, a Kaboom.js-based crypto mining simulator game. Not realistic.
 
