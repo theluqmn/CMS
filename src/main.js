@@ -125,7 +125,7 @@ class topBar{
 
 	// Exchange group
 	exchangeFrame = k.add([
-		k.rect(400, 50),
+		k.rect(350, 50),
 		k.pos(930, 50),
 		k.color(50, 50, 50)
 	]);
@@ -135,8 +135,14 @@ class topBar{
 		k.pos(940, 60)
 	]);
 
+	//	Alert
+	alertText = k.add([
+		k.text(""),
+		k.pos(1300, 60)
+	]);
+
 	// Refresh the text
-	refreshText = function(currentScene){
+	refreshText = function(currentScene) {
 		// Updating text to latest rates and digits
 		bar.miningRateText.text = `${NumRound(miningHash)} Hash`;
 		bar.btcText.text = `BTC: ${NumRound(btc)}`;
@@ -154,7 +160,15 @@ class topBar{
 			bar.exchangeSceneCommandText.color = k.rgb(255, 255, 255)
 		}
 	};
+
+	
+	alert = async(text) => {
+		bar.alertText.text = `${text}`;
+		await delay(2000);
+		bar.alertText.text = "";
+	}
 }
+
 
 function execute() {
 	(async () => {
@@ -205,6 +219,7 @@ function inputs() {
 
 	onKeyPress("e" || "E", () => {
 		k.go("exchange");
+		
 	});
 };
 
@@ -301,6 +316,7 @@ k.scene("exchange", () => {
 	onKeyPress("space", () => {
 		usd += (btc * btcExchangeRate);
 		btc = 0;
+		bar.alert("Exchange successful")
 	});
 
 	inputs();
