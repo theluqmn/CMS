@@ -137,11 +137,13 @@ class topBar{
 
 	// Refresh the text
 	refreshText = function(currentScene){
+		// Updating text to latest rates and digits
 		bar.miningRateText.text = `${NumRound(miningHash)} Hash`;
 		bar.btcText.text = `BTC: ${NumRound(btc)}`;
 		bar.usdText.text = `USD: ${NumRound(usd)}`;
 		bar.exchangeRateText.text = `BTC-USD: ${NumRound(btcExchangeRate)}`
 
+		// Highlighting active page
 		if (currentScene == "mining") {
 			bar.miningSceneCommandText.color = k.rgb(255, 255, 255);
 
@@ -185,7 +187,7 @@ function execute() {
   
 		statistics.mining = mineStats;
 		statistics.power = powerStats;
-  
+
 		await delay(1000);
 	  };
 	})();
@@ -210,6 +212,7 @@ execute();
 
 // Mining page
 k.scene("mining", () => {
+
 	k.setBackground(0,0,0);
 
 	bar = new topBar();
@@ -298,6 +301,15 @@ k.scene("exchange", () => {
 	onKeyPress("space", () => {
 		usd += (btc * btcExchangeRate);
 		btc = 0;
+
+		fetch('http://localhost:3000/')
+			.then(response => response.json())
+			.then(data => {
+				console.log(data.msg);
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
 	});
 
 	inputs();
