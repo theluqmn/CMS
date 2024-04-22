@@ -301,15 +301,6 @@ k.scene("exchange", () => {
 	onKeyPress("space", () => {
 		usd += (btc * btcExchangeRate);
 		btc = 0;
-
-		fetch('http://localhost:3000/')
-			.then(response => response.json())
-			.then(data => {
-				console.log(data.msg);
-			})
-			.catch(error => {
-				console.error('Error:', error);
-			});
 	});
 
 	inputs();
