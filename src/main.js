@@ -14,21 +14,23 @@ const k = kaboom();
 // Number formatting function
 function NumRound(number) {
 	if (number >= 1000 && number < 1000000) {
-        // Thousa
+        // Thousands
         number = (number / 1000).toFixed(2);
         number = `${number}k`;
         return number;
 
     } else if (number >= 1000000 && number < 1000000000) {
+		// Millions
         number = (number / 1000000).toFixed(2);
         number = `${number}m`;
         return number;
 
     } else if (number >= 1000000000 && number < 1000000000000) {
-
+		// Billions
         number = (number / 1000000000).toFixed(2);
         number = `${number}b`;
         return number;
+		
     } else {
 		return number.toFixed(2);
 	}
@@ -80,18 +82,21 @@ class topBar{
 		k.text("[Q] Mining"),
 		k.pos(0, 10),
 		k.color(150, 150, 150),
+		k.area()
 	]);
 
 	walletSceneCommandText = k.add([
 		k.text("[W] Wallet"),
 		k.pos(250, 10),
 		k.color(150, 150, 150),
+		k.area()
 	]);
 
 	exchangeSceneCommandText = k.add([
 		k.text("[E] Exchange"),
 		k.pos(500, 10),
 		k.color(150, 150, 150),
+		k.area()
 	])
 
 	// Mining group
@@ -159,6 +164,17 @@ class topBar{
 		} else if (currentScene == "exchange") {
 			bar.exchangeSceneCommandText.color = k.rgb(255, 255, 255)
 		}
+
+		// Functions as button
+		bar.miningSceneCommandText.onClick(() => {
+			k.go("mining");
+		});
+		bar.walletSceneCommandText.onClick(() => {
+			k.go("wallet");
+		});
+		bar.exchangeSceneCommandText.onClick(() => {
+			k.go("exchange");
+		});
 	};
 
 	

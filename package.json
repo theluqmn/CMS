@@ -6,6 +6,7 @@
 		"bundle": "npm run build && mkdir -p dist && zip -r dist/game.zip www -x \"**/.DS_Store\""
 	},
 	"dependencies": {
+		"esbuild": "^0.20.2",
 		"kaboom": "^3000.1.17"
 	}
 }
