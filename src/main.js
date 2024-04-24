@@ -9,7 +9,10 @@ var powerConsumption = 0;
 var btcExchangeRate = 51000;
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const k = kaboom();
+const k = kaboom({
+	width: 1600,
+	height: 900
+});
 
 // Number formatting function
 function NumRound(number) {
@@ -30,7 +33,7 @@ function NumRound(number) {
         number = (number / 1000000000).toFixed(2);
         number = `${number}b`;
         return number;
-		
+
     } else {
 		return number.toFixed(2);
 	}
@@ -82,26 +85,29 @@ class topBar{
 		k.text("[Q] Mining"),
 		k.pos(0, 10),
 		k.color(150, 150, 150),
+		k.scale(0.75),
 		k.area()
 	]);
 
 	walletSceneCommandText = k.add([
 		k.text("[W] Wallet"),
-		k.pos(250, 10),
+		k.pos(200, 10),
 		k.color(150, 150, 150),
+		k.scale(0.75),
 		k.area()
 	]);
 
 	exchangeSceneCommandText = k.add([
 		k.text("[E] Exchange"),
-		k.pos(500, 10),
+		k.pos(400, 10),
 		k.color(150, 150, 150),
+		k.scale(0.75),
 		k.area()
 	])
 
 	// Mining group
 	miningFrame = k.add([
-		k.rect(300, 50),
+		k.rect(220, 50),
 		k.pos(10, 50),
 		k.color(50, 50, 50)
 	]);
@@ -109,41 +115,46 @@ class topBar{
 	miningRateText = k.add([
 		k.text(""),
 		k.pos(20, 60),
+		k.scale(0.8)
 	]);
 
 	// Wallet group
 	walletFrame = k.add([
-		k.rect(600, 50),
-		k.pos(320, 50),
+		k.rect(500, 50),
+		k.pos(240, 50),
 		k.color(50, 50, 50)
 	]);
 	
 	btcText = k.add([
 		k.text(""),
-		k.pos(330, 60),
+		k.pos(250, 60),
+		k.scale(0.8)
 	]);
 	
 	usdText = k.add([
 		k.text(""),
-		k.pos(630, 60),
+		k.pos(500, 60),
+		k.scale(0.8)
 	]);
 
 	// Exchange group
 	exchangeFrame = k.add([
-		k.rect(350, 50),
-		k.pos(930, 50),
+		k.rect(300, 50),
+		k.pos(750, 50),
 		k.color(50, 50, 50)
 	]);
 
 	exchangeRateText = k.add([
 		k.text(""),
-		k.pos(940, 60)
+		k.pos(760, 60),
+		k.scale(0.8)
 	]);
 
 	//	Alert
 	alertText = k.add([
 		k.text(""),
-		k.pos(1300, 60)
+		k.pos(1100, 60),
+		k.scale(0.8)
 	]);
 
 	// Refresh the text
@@ -323,17 +334,19 @@ k.scene("exchange", () => {
 	]);
 
 	const exchangeBtcExchangeText = k.add([
-		k.text("Press space to exchange (all)"),
+		k.text("Press space or click here to exchange all BTC to USD"),
 		k.pos(10, 800),
 		k.color(0, 241, 18),
-		k.anchor("botleft")
+		k.area()
 	]);
 
-	onKeyPress("space", () => {
+	function exchangeBtcUsd() {
 		usd += (btc * btcExchangeRate);
 		btc = 0;
 		bar.alert("Exchange successful")
-	});
+	}
+	exchangeBtcExchangeText.onClick(() => { exchangeBtcUsd() });
+	onKeyPress("space", () => { exchangeBtcUsd() });
 
 	inputs();
 	k.onUpdate(() => {
