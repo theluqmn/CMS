@@ -33,15 +33,12 @@ game = {
 };
 
 // Importing other scripts
-import infoBar from './scripts/infoBar';
+import { walletScene } from './scenes/wallet';
+import { exchangeScene } from './scenes/exchange';
+import { miningScene } from './scenes/mining';
 
-// Main game scene
-k.scene("mining", ()=> {
-	panel = new infoBar();
-
-	k.onUpdate(() => {
-		panel.refresh();
-	});
-});
+miningScene()
+walletScene()
+exchangeScene()
 
 k.go("mining");
