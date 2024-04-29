@@ -36,12 +36,12 @@ game = {
 import infoBar from './scripts/infoBar';
 
 // Main game scene
-k.scene("game", ()=> {
-	panel = new infoBar
+k.scene("mining", ()=> {
+	panel = new infoBar();
 
 	k.onUpdate(() => {
-		
+		panel.refresh();
 	});
 });
 
-k.go("game");
+k.go("mining");
