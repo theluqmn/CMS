@@ -13,4 +13,4 @@ export function universalInputs() {
         console.log("Changing to exchange scene");
         k.go("exchange");
     });
-}
+};

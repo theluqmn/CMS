@@ -19,11 +19,8 @@ game = {
 	},
 	"mining": {
 		"hashrate": 0,
-		"btc": {
-			"difficulty": 10000,
-			"hashrate": 0,
-			"miningRate": 0
-		}
+		"difficulty": 100000,
+		"miningRate": 0
 	},
 	"exchange": {
 		"btc": 51025,

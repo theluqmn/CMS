@@ -81,12 +81,14 @@ class infoBar {
 
     usdHeader = k.add([
         k.text("USD"),
+        k.color(106, 243, 17),
         k.pos(220, 100),
         k.scale(0.75)
     ]);
 
     cryptoHeader = k.add([
         k.text("BTC"),
+        k.color(243, 201, 17),
         k.pos(400, 100),
         k.scale(0.75)
     ]);
@@ -137,10 +139,9 @@ class infoBar {
             panel.inventorySceneText.color = k.rgb(255, 255, 255);
 
         } else if (currentScene == "settings") {
-            panel.settingsSceneText.color = k.rgb(255, 255, 255)
-        }
+            panel.settingsSceneText.color = k.rgb(255, 255, 255);
+        };
     };
 };
-
 
 export default infoBar;
