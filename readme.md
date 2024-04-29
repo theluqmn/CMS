@@ -1,5 +1,7 @@
 # CMS - Crypto Mining Simulator
 
+## I am working on major overhauls, and have it pushed here. For working versions, head over to releases!
+
 My JavaScript side project, a Kaboom.js-based crypto mining simulator game. Not realistic.
 
 ## How it works
