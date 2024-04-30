@@ -50,38 +50,68 @@ class infoBar {
 		k.area()
 	]);
 
+    cmsText = k.add([
+        k.text("Crypto Mining Sim"),
+        k.pos(1310, 10),
+        k.color(251, 255, 0),
+        k.scale(0.75),
+        k.area()
+    ]);
+
     // Frames
     miningRateFrame = k.add([
         k.rect(190, 80),
         k.pos(10, 50),
         k.color(0, 0, 0),
-        k.outline(2, k.rgb(255, 255, 255)),
+        k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     walletFrame = k.add([
         k.rect(350, 80),
         k.pos(210, 50),
         k.color(0, 0, 0),
-        k.outline(2, k.rgb(255, 255, 255)),
+        k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     exchangeFrame = k.add([
         k.rect(190, 80),
         k.pos(570, 50),
         k.color(0, 0, 0),
-        k.outline(2, k.rgb(255, 255, 255)),
+        k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     powerFrame = k.add([
         k.rect(280, 80),
         k.pos(770, 50),
         k.color(0, 0, 0),
-        k.outline(2, k.rgb(255,255,255))
+        k.outline(3, k.rgb(255, 255, 255))
+    ]);
+
+    // Alert
+    alertFrame = k.add([
+        k.rect(530, 80),
+        k.pos(1060, 50),
+        k.color(0, 0, 0),
+        k.outline(3, k.rgb(255, 255, 255))
+    ]);
+
+    alertHeader = k.add([
+        k.text("No alerts, keep mining!"),
+        k.color(220, 220, 220),
+        k.pos(1070, 100),
+        k.scale(0.75)
+    ]);
+
+    alertText = k.add([
+        k.text("------"),
+        k.pos(1070, 60),
+        k.scale(0.75)
     ]);
 ;
     // Header
     miningRateHeader = k.add([
         k.text("Mining Rate"),
+        k.color(220, 220, 220),
         k.pos(20, 100),
         k.scale(0.75)
     ]);
@@ -102,12 +132,14 @@ class infoBar {
 
     exchangeHeader = k.add([
         k.text("BTC-USD"),
+        k.color(220, 220, 220),
         k.pos(580, 100),
         k.scale(0.75)
     ]);
 
     powerHeader = k.add([
         k.text("Power Consumption"),
+        k.color(242, 107, 52),
         k.pos(780, 100),
         k.scale(0.75)
     ]);
