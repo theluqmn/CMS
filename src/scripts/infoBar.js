@@ -59,7 +59,7 @@ class infoBar {
     ]);
 
     walletFrame = k.add([
-        k.rect(400, 80),
+        k.rect(350, 80),
         k.pos(210, 50),
         k.color(0, 0, 0),
         k.outline(2, k.rgb(255, 255, 255)),
@@ -67,9 +67,16 @@ class infoBar {
 
     exchangeFrame = k.add([
         k.rect(190, 80),
-        k.pos(620, 50),
+        k.pos(570, 50),
         k.color(0, 0, 0),
         k.outline(2, k.rgb(255, 255, 255)),
+    ]);
+
+    powerFrame = k.add([
+        k.rect(280, 80),
+        k.pos(770, 50),
+        k.color(0, 0, 0),
+        k.outline(2, k.rgb(255,255,255))
     ]);
 ;
     // Header
@@ -95,7 +102,13 @@ class infoBar {
 
     exchangeHeader = k.add([
         k.text("BTC-USD"),
-        k.pos(630, 100),
+        k.pos(580, 100),
+        k.scale(0.75)
+    ]);
+
+    powerHeader = k.add([
+        k.text("Power Consumption"),
+        k.pos(780, 100),
         k.scale(0.75)
     ]);
 
@@ -117,8 +130,13 @@ class infoBar {
 
     exchangeText = k.add([
         k.text("51.85k"),
-        k.pos(630, 60)
+        k.pos(580, 60)
     ])
+
+    powerText = k.add([
+        k.text("100.50kW"),
+        k.pos(780, 60)
+    ]);
     
     // Updates whatever elements that requires updating
     refresh = function(currentScene) {
