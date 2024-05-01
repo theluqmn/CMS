@@ -15,7 +15,8 @@ export const wallet = {"usd": 0, "crypto": {"btc": 0, "eth": 0}}
 export const game = {
 	"power": {
 		"consumption": 0,
-		"production": 0
+		"production": 0,
+		"gridPrice": 0.12
 	},
 	"mining": {
 		"hashrate": 0,

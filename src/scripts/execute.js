@@ -13,10 +13,18 @@ export function execute() {
             game.power.consumption = 0;
 
             /*
+            Loops around all power generators
+            */
+
+            /*
             Loop all the owned GPUs, then add up the hashrate
             */
             for (let i = 0; i < ownedGPU.length; i++) {
                 let currentGPU = ownedGPU[i];
+                // Power consumption calculation
+                game.power.consumption += gpu[currentGPU.company][currentGPU.product][currentGPU.model].powerConsumption;
+
+                // Hashrate calculation
                 game.mining.hashrate += gpu[currentGPU.company][currentGPU.product][currentGPU.model].hashrate;
             };
 
@@ -26,14 +34,6 @@ export function execute() {
             // Update wallet, mining rate
             wallet.crypto.btc += game.mining.miningRate;
             game.mining.totalMined += game.mining.miningRate;
-
-
-            // Update power consumption
-            game.power.consumption = 0;
-            for (let i = 0; i < ownedGPU.length; i++) {
-                let currentGPU = ownedGPU[i];
-                game.power.consumption += gpu[currentGPU.company][currentGPU.product][currentGPU.model].powerConsumption;
-            };
 
             // Every cycle is delayed by 1000ms
             console.log(`Mining cycle ${cycle}\n- Hashrate: ${game.mining.hashrate}\n- Mining rate: ${game.mining.miningRate}\n- Power consumption: ${game.power.consumption}\n- Wallet: ${wallet.crypto.btc}\n`);

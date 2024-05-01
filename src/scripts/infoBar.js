@@ -197,8 +197,8 @@ class infoBar {
         panel.hashrateText.text = `${numRound(game.mining.hashrate)}`;
         panel.usdText.text = `$${numRound(wallet.usd)}`;
         panel.cryptoText.text = `${numRound(wallet.crypto.btc)}`;
-        panel.exchangeText.text = `${numRound(game.exchange.btc)}`
-        panel.powerText.text = `${numRound(game.power.consumption)}W`
+        panel.exchangeText.text = `${numRound(game.exchange.btc)}`;
+        panel.powerText.text = `${numRound(game.power.consumption)}W`;
 
     };
 };
