@@ -1,4 +1,5 @@
 import { numRound } from "./numRound";
+import { game, wallet } from "../main";
 
 class infoBar {
     // Navigation
@@ -59,7 +60,7 @@ class infoBar {
     ]);
 
     // Frames
-    miningRateFrame = k.add([
+    hashrateFrame = k.add([
         k.rect(190, 80),
         k.pos(10, 50),
         k.color(0, 0, 0),
@@ -109,8 +110,8 @@ class infoBar {
     ]);
 ;
     // Header
-    miningRateHeader = k.add([
-        k.text("Mining Rate"),
+    hashrateHeader = k.add([
+        k.text("Hashrate"),
         k.color(220, 220, 220),
         k.pos(20, 100),
         k.scale(0.75)
@@ -145,7 +146,7 @@ class infoBar {
     ]);
 
     // Text
-    miningRateText = k.add([
+    hashrateText = k.add([
         k.text("150.00k"),
         k.pos(20, 60)
     ]);
@@ -191,6 +192,14 @@ class infoBar {
         } else if (currentScene == "settings") {
             panel.settingsSceneText.color = k.rgb(255, 255, 255);
         };
+
+        // Text
+        panel.hashrateText.text = `${numRound(game.mining.hashrate)}`;
+        panel.usdText.text = `$${numRound(wallet.usd)}`;
+        panel.cryptoText.text = `${numRound(wallet.crypto.btc)}`;
+        panel.exchangeText.text = `${numRound(game.exchange.btc)}`
+        panel.powerText.text = `${numRound(game.power.consumption)}W`
+
     };
 };
 

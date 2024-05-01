@@ -1,5 +1,8 @@
 import infoBar from "../scripts/infoBar";
 import { universalInputs } from "../scripts/universalInput";
+import { ownedGPU } from "../scripts/data";
+import { wallet, game } from "../main";
+import { numRound } from "../scripts/numRound";
 
 export function miningScene() {
     k.scene("mining", ()=> {
@@ -282,6 +285,19 @@ export function miningScene() {
         universalInputs();
         k.onUpdate(() => {
             panel.refresh("mining");
+
+            // Updating all the text
+
+                // Mining
+            hashrateText.text = game.mining.hashrate;
+            miningRateText.text = `BTC ${game.mining.miningRate}`;
+            valueMiningRateText.text = `USD ${numRound(game.mining.miningRate * game.exchange.btc)}`;
+            totalMinedText.text = `BTC ${numRound(game.mining.totalMined)}`;
+
+                // Power
+
+                // Operations
+            gpuAmountText.text = ownedGPU.length;
         });
     });
 };

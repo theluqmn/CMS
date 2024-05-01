@@ -11,16 +11,17 @@ delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 k.loadSprite("bean", "sprites/bean.png");
 
 // Game data
-wallet = {"usd": 0, "crypto": {"btc": 0, "eth": 0}}
-game = {
+export const wallet = {"usd": 0, "crypto": {"btc": 0, "eth": 0}}
+export const game = {
 	"power": {
 		"consumption": 0,
 		"production": 0
 	},
 	"mining": {
 		"hashrate": 0,
-		"difficulty": 100000,
-		"miningRate": 0
+		"difficulty": 1000,
+		"miningRate": 0,
+		"totalMined": 0
 	},
 	"exchange": {
 		"btc": 51025,
@@ -30,12 +31,14 @@ game = {
 };
 
 // Importing other scripts
+import { execute } from './scripts/execute';
 import { walletScene } from './scenes/wallet';
 import { exchangeScene } from './scenes/exchange';
 import { miningScene } from './scenes/mining';
 
-miningScene()
-walletScene()
-exchangeScene()
+execute();
+miningScene();
+walletScene();
+exchangeScene();
 
 k.go("mining");

@@ -1,5 +1,44 @@
+import { wallet, game } from "../main";
+import { ownedGPU, gpu } from "./data";
+
 export function execute() {
+    // Async function
     (async () => {
-        while (true) {};
+
+       let cycle = 0;
+
+       while (true) {
+            game.mining.hashrate = 0;
+            game.mining.miningRate = 0;
+            game.power.consumption = 0;
+
+            /*
+            Loop all the owned GPUs, then add up the hashrate
+            */
+            for (let i = 0; i < ownedGPU.length; i++) {
+                let currentGPU = ownedGPU[i];
+                game.mining.hashrate += gpu[currentGPU.company][currentGPU.product][currentGPU.model].hashrate;
+            };
+
+            // Mining rate
+            game.mining.miningRate = game.mining.hashrate / game.mining.difficulty;
+
+            // Update wallet, mining rate
+            wallet.crypto.btc += game.mining.miningRate;
+            game.mining.totalMined += game.mining.miningRate;
+
+
+            // Update power consumption
+            game.power.consumption = 0;
+            for (let i = 0; i < ownedGPU.length; i++) {
+                let currentGPU = ownedGPU[i];
+                game.power.consumption += gpu[currentGPU.company][currentGPU.product][currentGPU.model].powerConsumption;
+            };
+
+            // Every cycle is delayed by 1000ms
+            console.log(`Mining cycle ${cycle}\n- Hashrate: ${game.mining.hashrate}\n- Mining rate: ${game.mining.miningRate}\n- Power consumption: ${game.power.consumption}\n- Wallet: ${wallet.crypto.btc}\n`);
+            cycle++;
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        };
     })();
 };
