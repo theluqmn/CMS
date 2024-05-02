@@ -102,5 +102,18 @@ export const ownedGPU = [
         company: "nvidia",
         product: "geforce",
         model: "rtx4080"
-    }
+    },
+    
+    {
+        company: "nvidia",
+        product: "geforce",
+        model: "rtx4090"
+    },
+
+    {
+        company: "nvidia",
+        product: "geforce",
+        model: "rtx4090"
+    },
+
 ]; 

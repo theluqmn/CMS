@@ -8,13 +8,10 @@ export function execute() {
        let cycle = 0;
 
        while (true) {
+            
             game.mining.hashrate = 0;
             game.mining.miningRate = 0;
             game.power.consumption = 0;
-
-            /*
-            Loops around all power generators
-            */
 
             /*
             Loop all the owned GPUs, then add up the hashrate
@@ -35,9 +32,18 @@ export function execute() {
             wallet.crypto.btc += game.mining.miningRate;
             game.mining.totalMined += game.mining.miningRate;
 
-            // Every cycle is delayed by 1000ms
+            // Logging
+            game.mining.log.push({
+                cycle: cycle,
+                hashrate: game.mining.hashrate,
+                miningRate: game.mining.miningRate,
+                powerConsumption: game.power.consumption,
+            });
+
             console.log(`Mining cycle ${cycle}\n- Hashrate: ${game.mining.hashrate}\n- Mining rate: ${game.mining.miningRate}\n- Power consumption: ${game.power.consumption}\n- Wallet: ${wallet.crypto.btc}\n`);
             cycle++;
+            
+            // Every cycle is delayed by 1000ms
             await new Promise(resolve => setTimeout(resolve, 1000));
         };
     })();

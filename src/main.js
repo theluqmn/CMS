@@ -20,9 +20,10 @@ export const game = {
 	},
 	"mining": {
 		"hashrate": 0,
-		"difficulty": 1000,
+		"difficulty": 251285,
 		"miningRate": 0,
-		"totalMined": 0
+		"totalMined": 0,
+		"log": []	
 	},
 	"exchange": {
 		"btc": 51025,

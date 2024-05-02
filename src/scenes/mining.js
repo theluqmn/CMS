@@ -290,7 +290,7 @@ export function miningScene() {
 
                 // Mining
             hashrateText.text = game.mining.hashrate;
-            miningRateText.text = `BTC ${game.mining.miningRate}`;
+            miningRateText.text = `BTC ${numRound(game.mining.miningRate)}`;
             valueMiningRateText.text = `USD ${numRound(game.mining.miningRate * game.exchange.btc)}`;
             totalMinedText.text = `BTC ${numRound(game.mining.totalMined)}`;
 
