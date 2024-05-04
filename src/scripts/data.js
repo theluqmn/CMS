@@ -24,7 +24,6 @@ export const gpu = {
                 company: "NVIDIA",
                 product: "GeForce RTX 4090",
             },
-
             // RTX 4080
             rtx4080: {
                 hashrate: 150,
@@ -33,7 +32,6 @@ export const gpu = {
                 company: "NVIDIA",
                 product: "GeForce RTX 4080",
             },
-
             // RTX 4070 Ti
             rtx4070ti: {
                 hashrate: 120,
@@ -42,7 +40,6 @@ export const gpu = {
                 company: "NVIDIA",
                 product: "GeForce RTX 4070 Ti",
             },
-
             // RTX 4070
             rtx4070: {
                 hashrate: 90,
@@ -51,7 +48,6 @@ export const gpu = {
                 company: "NVIDIA",
                 product: "GeForce RTX 4070",
             },
-
             // RTX 3090 Ti
             rtx3090ti: {
                 hashrate: 140,
@@ -60,7 +56,6 @@ export const gpu = {
                 company: "NVIDIA",
                 product: "GeForce RTX 3090 Ti",
             },
-
             // RTX 3090
             rtx3090: {
                 hashrate: 120,
@@ -70,19 +65,55 @@ export const gpu = {
                 product: "GeForce RTX 3090",
             }
         },
-
-        //quaddro
+        //Quaddro
     },
 
     // AMD
     amd: {},
 
     // Intel
-    intel: {
-        // ARC
-        arc: {
-            // A770
+    intel: {}
+};
 
+export const powerGenerator = {
+    /*
+    power production: Watts produced
+    price: Price to purchase
+    upkeep: To pay per cycle
+    environment: Affects environmental score
+    */
+    diesel: {
+        DG2: {
+            powerProduction: 2000,
+            price: 580,
+            upkeep: 8,
+            environment: -4
+        },
+        DG5: {
+            powerProduction: 5000,
+            price: 1200,
+            upkeep: 15,
+            environment: -10
+        },
+        DG10: {
+            powerProduction: 10000,
+            price: 2560,
+            upkeep: 28,
+            environment: -20
+        },
+        DG20: {
+            powerProduction: 20000,
+            price: 5300,
+            upkeep: 54,
+            environment: -40
+        }
+    },
+    solar: {
+        SR10: {
+            powerProduction: 10000,
+            price: 2560,
+            upkeep: 28,
+            environment: + 10
         }
     }
 };
@@ -116,4 +147,11 @@ export const ownedGPU = [
         model: "rtx4090"
     },
 
-]; 
+];
+
+export const ownedPowerGenerator = [
+//     {
+//         type: "diesel",
+//         model: "DG2"
+//     }
+]

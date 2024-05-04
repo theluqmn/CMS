@@ -11,16 +11,18 @@ delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 k.loadSprite("bean", "sprites/bean.png");
 
 // Game data
-export const wallet = {"usd": 0, "crypto": {"btc": 0, "eth": 0}}
+export const wallet = {"usd": 150, "crypto": {"btc": 0, "eth": 0}}
 export const game = {
 	"power": {
 		"consumption": 0,
 		"production": 0,
-		"gridPrice": 0.12
+		grid: 0,
+		"gridPrice": 0.012, // Paid per watt,
+		"log": []
 	},
 	"mining": {
 		"hashrate": 0,
-		"difficulty": 251285,
+		"difficulty": 215,
 		"miningRate": 0,
 		"totalMined": 0,
 		"log": []	
