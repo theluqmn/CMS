@@ -14,7 +14,8 @@ export function execute() {
             game.power.consumption = 0;
 
             /*
-            Loop all the owned GPUs, then add up the hashrate
+            Loop all the owned GPUs
+            Add up the hashrate, and power consumption
             */
             for (let i = 0; i < ownedGPU.length; i++) {
                 let currentGPU = ownedGPU[i];
