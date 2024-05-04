@@ -8,7 +8,7 @@ export function execute() {
        let cycle = 0;
 
        while (true) {
-            
+            // Reset values
             game.mining.hashrate = 0;
             game.mining.miningRate = 0;
 
@@ -21,13 +21,11 @@ export function execute() {
                 game.power.production += powerGenerator[currentGenerator.type][currentGenerator.model].powerProduction;
             };
 
-
             // Hashrate and power consumption calculation
             for (let i = 0; i < ownedGPU.length; i++) {
                 let currentGPU = ownedGPU[i];
                 // Power consumption calculation
                 game.power.consumption += gpu[currentGPU.company][currentGPU.product][currentGPU.model].powerConsumption;
-
                 // Hashrate calculation
                 game.mining.hashrate += gpu[currentGPU.company][currentGPU.product][currentGPU.model].hashrate;
             };
@@ -41,26 +39,33 @@ export function execute() {
             if (game.power.consumption > game.power.production) {
                 game.power.grid = game.power.production - game.power.consumption;
                 wallet.usd += game.power.grid * game.power.gridPrice;
-                console.log(`Power production deficit. Power from grid: ${game.power.grid}, paid: ${game.power.grid * game.power.gridPrice}`)
-
             } else {
                 game.power.grid = 0;
-                console.log("Power production is higher than consumption")
             }
 
             // Logging
-            game.mining.log.push({
+            game.mining.log.push({ //Mining
                 cycle: cycle,
                 hashrate: game.mining.hashrate,
                 miningRate: game.mining.miningRate,
             });
-
-            game.power.log.push({
+            game.power.log.push({ //Power
                 cycle: cycle,
                 production: game.power.production,
                 consumption: game.power.consumption
             });
-            console.log(`Mining cycle ${cycle}\n- Hashrate: ${game.mining.hashrate}\n- Mining rate: ${game.mining.miningRate}\n- Power consumption: ${game.power.consumption}\n- Wallet: ${wallet.crypto.btc}\n`);
+            // Cycle update
+            console.log(
+                `Cycle: ${cycle}` + 
+                `\nHashrate: ${game.mining.hashrate}` + 
+                `\nMining rate: ${game.mining.miningRate}\n` + 
+                `\nPower production: ${game.power.production}` + 
+                `\nPower consumption: ${game.power.consumption}` + 
+                `\nPower grid: ${game.power.grid}` +
+                `\nPower grid payment: ${Math.abs(game.power.grid * game.power.gridPrice)}\n` + 
+                `\nBTC: ${wallet.crypto.btc}` + 
+                `\nUSD: ${wallet.usd}`
+            );
             cycle++;
             
             // Every cycle is delayed by 1000ms (one second)

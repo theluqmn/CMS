@@ -1,3 +1,5 @@
+// Function to handle page changing using keyboard shortcuts
+
 export function universalInputs() {
     k.onKeyPress("q" || "W", () =>{
         console.log("Changing to mining scene");
