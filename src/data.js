@@ -123,30 +123,20 @@ export const ownedGPU = [
     Format is as follows: 
     company, product, model
     */
-      {
-        company: "nvidia",
-        product: "geforce",
-        model: "rtx4090"
-    },
-
     {
         company: "nvidia",
         product: "geforce",
-        model: "rtx4080"
+        model: "rtx4090",
+        crypto: "btc",
+        clock: 1
     },
-    
     {
         company: "nvidia",
         product: "geforce",
-        model: "rtx4090"
-    },
-
-    {
-        company: "nvidia",
-        product: "geforce",
-        model: "rtx4090"
-    },
-
+        model: "rtx4080",
+        crypto: "btc",
+        clock: 1
+    }
 ];
 
 export const ownedPowerGenerator = [

@@ -24,11 +24,20 @@ export const game = {
 		log: []
 	},
 	mining: {
-		hashrate: 0,
-		difficulty: 215,
-		miningRate: 0,
-		totalMined: 0,
-		log: []	
+		btc: {
+			hashrate: 0,
+			difficulty: 21575,
+			miningRate: 0,
+			totalMined: 0,
+			log: []
+		},
+		eth: {
+			hashrate: 0,
+			difficulty: 1000,
+			miningRate: 0,
+			totalMined: 0,
+			log: []
+		}
 	},
 	exchange: {
 		btc: 51025,
@@ -37,8 +46,10 @@ export const game = {
 	}
 };
 
-// Importing other scripts
-import { execute } from './scripts/execute';
-// Import scenes
+// Importing scripts
+import { Execute } from './scripts/execute';
 
-execute();
+// Importng UIs
+
+// Run
+Execute();
