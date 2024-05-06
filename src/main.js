@@ -9,7 +9,7 @@ delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Game data
 export const wallet = {
-	usd: 150,
+	usd: 1590,
 	crypto: {
 		btc: 0,
 		eth: 0
@@ -49,7 +49,10 @@ export const game = {
 // Importing scripts
 import { Execute } from './scripts/execute';
 
+import { gpuStore } from './scripts/store';
+
 // Importng UIs
 
 // Run
 Execute();
+gpuStore("nvidia", "geforce", "rtx3090");

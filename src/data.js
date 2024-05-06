@@ -22,7 +22,7 @@ export const gpu = {
                 powerConsumption: 450,
                 price: 1599,
                 company: "NVIDIA",
-                product: "GeForce RTX 4090",
+                model: "GeForce RTX 4090",
             },
             // RTX 4080
             rtx4080: {
@@ -30,7 +30,7 @@ export const gpu = {
                 powerConsumption: 320,
                 price: 1199,
                 company: "NVIDIA",
-                product: "GeForce RTX 4080",
+                model: "GeForce RTX 4080",
             },
             // RTX 4070 Ti
             rtx4070ti: {
@@ -38,7 +38,7 @@ export const gpu = {
                 powerConsumption: 285,
                 price: 899,
                 company: "NVIDIA",
-                product: "GeForce RTX 4070 Ti",
+                model: "GeForce RTX 4070 Ti",
             },
             // RTX 4070
             rtx4070: {
@@ -46,7 +46,7 @@ export const gpu = {
                 powerConsumption: 240,
                 price: 549,
                 company: "NVIDIA",
-                product: "GeForce RTX 4070",
+                model: "GeForce RTX 4070",
             },
             // RTX 3090 Ti
             rtx3090ti: {
@@ -54,7 +54,7 @@ export const gpu = {
                 powerConsumption: 450,
                 price: 1999,
                 company: "NVIDIA",
-                product: "GeForce RTX 3090 Ti",
+                model: "GeForce RTX 3090 Ti",
             },
             // RTX 3090
             rtx3090: {
@@ -62,7 +62,7 @@ export const gpu = {
                 powerConsumption: 350,
                 price: 1499,
                 company: "NVIDIA",
-                product: "GeForce RTX 3090",
+                model: "GeForce RTX 3090",
             }
         },
         //Quaddro
