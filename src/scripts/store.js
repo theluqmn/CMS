@@ -1,9 +1,11 @@
 import { game, wallet } from "../main";
 import { gpu, ownedGPU, powerGenerator, ownedPowerGenerator } from "../data";
 
+// Purchasing GPUs
 export function gpuStore(GPUcompany, GPUproduct, GPUmodel){
     referenceGPU = gpu[GPUcompany][GPUproduct][GPUmodel];
 
+    // Check if enough USD balance
     if (referenceGPU.price <= wallet.usd) {
         wallet.usd -= referenceGPU.price;
         ownedGPU.push({company: GPUcompany, product: GPUproduct, model: GPUmodel, crypto: "btc", clock: 1});
@@ -14,8 +16,11 @@ export function gpuStore(GPUcompany, GPUproduct, GPUmodel){
     };
 };
 
+// Purchasing power generators
 export function powerStore(powerType, powerModel){
     referencePower = powerGenerator[powerType][powerModel];
+
+    // Check if enough USD balance
     if (referencePower.price <= wallet.usd) {
         wallet.usd -= referencePower.price;
         ownedPowerGenerator.push({type: powerType, model: powerModel});

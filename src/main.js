@@ -42,7 +42,7 @@ export const game = {
 	},
 	exchange: {
 		btc: 51025,
-		eth: 10000,
+		eth: 9675,
 		log: []
 	}
 };
@@ -52,12 +52,14 @@ import { Execute } from './scripts/execute';
 
 import { gpuStore, powerStore } from './scripts/store';
 import { miningStatistics } from './scripts/statistics';
+import { Exchange } from './scripts/exchange';
 
 // Importng UIs
 
 // Run
 Execute();
 gpuStore("nvidia", "geforce", "rtx4080");
-// powerStore("diesel", "DG2");
+powerStore("diesel", "DG2");
 
 miningStatistics("btc");
+Exchange("usd", "btc", 5680);
