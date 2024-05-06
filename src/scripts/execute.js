@@ -12,7 +12,6 @@ export function Execute() {
             game.power.consumption = 0; game.power.production = 0;
             game.mining.btc.hashrate = 0; game.mining.eth.hashrate = 0;
 
-
             // Loop each ownedGPU for mining
             for (let i = 0; i < ownedGPU.length; i++) {
                 currentGPU = ownedGPU[i];

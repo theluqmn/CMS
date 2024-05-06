@@ -26,5 +26,4 @@ Colors:
 65, 203, 25 - Positive green
 128, 228, 98 - Slightly green
 
-
 #### Currently, this project is in Alpha

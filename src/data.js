@@ -87,33 +87,38 @@ export const powerGenerator = {
             powerProduction: 2000,
             price: 580,
             upkeep: 8,
-            environment: -4
+            environment: -4,
+            model: "Diesel Generator 2kW"
         },
         DG5: {
             powerProduction: 5000,
             price: 1200,
             upkeep: 15,
-            environment: -10
+            environment: -10,
+            model: "Diesel Generator 5kW"
         },
         DG10: {
             powerProduction: 10000,
             price: 2560,
             upkeep: 28,
-            environment: -20
+            environment: -20,
+            model: "Diesel Generator 10kW"
         },
         DG20: {
             powerProduction: 20000,
             price: 5300,
             upkeep: 54,
-            environment: -40
+            environment: -40,
+            model: "Diesel Generator 20kW"
         }
     },
     solar: {
-        SR10: {
+        SF10: {
             powerProduction: 10000,
             price: 2560,
             upkeep: 28,
-            environment: + 10
+            environment: + 10,
+            model: "Solar Farm 10kW"
         }
     }
 };

@@ -9,7 +9,7 @@ delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Game data
 export const wallet = {
-	usd: 1590,
+	usd: 10000,
 	crypto: {
 		btc: 0,
 		eth: 0
@@ -19,8 +19,9 @@ export const game = {
 	power: {
 		consumption: 0,
 		production: 0,
+		upkeep: 0,
 		grid: 0,
-		gridPrice: 0.012, // Paid per watt,
+		gridPrice: 0.024, // Paid per watt,
 		log: []
 	},
 	mining: {
@@ -49,10 +50,14 @@ export const game = {
 // Importing scripts
 import { Execute } from './scripts/execute';
 
-import { gpuStore } from './scripts/store';
+import { gpuStore, powerStore } from './scripts/store';
+import { miningStatistics } from './scripts/statistics';
 
 // Importng UIs
 
 // Run
 Execute();
-gpuStore("nvidia", "geforce", "rtx3090");
+gpuStore("nvidia", "geforce", "rtx4080");
+// powerStore("diesel", "DG2");
+
+miningStatistics("btc");
