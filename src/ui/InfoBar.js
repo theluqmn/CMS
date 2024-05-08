@@ -1,5 +1,4 @@
 class InfoBar {
-
     MiningText = k.add([
         k.text("[Q] Mining"),
         k.pos(5, 20),
@@ -31,18 +30,18 @@ class InfoBar {
         // 
         switch (scene) {
             case "mining": {
-                MiningText.scale(0.8);
-                MiningText.color = k.rgb(255, 255, 255);
+                bar.MiningText.scale = 0.8;
+                bar.MiningText.color = k.rgb(255, 255, 255);
                 break;
             };
             case "wallet": {
-                WalletText.scale(0.8);
-                WalletText.color = k.rgb(255, 255, 255);
+                bar.WalletText.scale = 0.8;
+                bar.alletText.color = k.rgb(255, 255, 255);
                 break;
             };
             case "exchange": {
-                ExchangeText.scale(0.8);
-                ExchangeText.color = k.rgb(255, 255, 255);
+                bar.ExchangeText.scale = 0.8;
+                bar.ExchangeText.color = k.rgb(255, 255, 255);
                 break;
             };
         }
