@@ -1,6 +1,6 @@
 import { game } from "../main";
 
-export function miningStatistics(coin, view) {
+export function MiningStats(coin, view) {
     let referenceCoin = game.mining[coin]
 
     let totalHashrate = 0; let averageHashrate = 0;

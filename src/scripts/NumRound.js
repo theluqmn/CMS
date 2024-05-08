@@ -1,5 +1,5 @@
 // Function that formats number for text usage, returns the formatted text
-export function numRound(num) {
+export function NumRound(num) {
     let number = Math.abs(num);
     let metric = "";
 

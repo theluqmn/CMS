@@ -1,7 +1,7 @@
 import kaboom from 'kaboom';
 k = kaboom({
 	width: 1600,
-	height: 1000,
+	height: 900,
 	background: [0, 0, 0]
 });
 
@@ -48,18 +48,21 @@ export const game = {
 };
 
 // Importing scripts
-import { Execute } from './scripts/execute';
+import { Execute } from './scripts/Execute';
 
-import { gpuStore, powerStore } from './scripts/store';
-import { miningStatistics } from './scripts/statistics';
-import { Exchange } from './scripts/exchange';
+import { gpuStore, powerStore } from './scripts/Store';
+import { Exchange } from './scripts/Exchange';
 
 // Importng UIs
+import { MiningScene } from './ui/Mining';
+
+MiningScene();
 
 // Run
 Execute();
 gpuStore("nvidia", "geforce", "rtx4080");
 powerStore("diesel", "DG2");
 
-miningStatistics("btc");
 Exchange("usd", "btc", 5680);
+
+k.go("mining");
