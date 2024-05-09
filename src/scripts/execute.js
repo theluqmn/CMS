@@ -35,8 +35,10 @@ export function Execute() {
                 currentPowerGenerator = ownedPowerGenerator[i];
                 referencePowerGenerator = powerGenerator[currentPowerGenerator.type][currentPowerGenerator.model];
 
-                game.power.production += referencePowerGenerator.powerProduction;
-                wallet.usd -= referencePowerGenerator.upkeep; // Deduct wallet for power generation upkeep
+                if (referencePowerGenerator.upkeep < wallet.usd) {
+                    game.power.production += referencePowerGenerator.powerProduction;
+                    wallet.usd -= referencePowerGenerator.upkeep; // Deduct wallet for power generation upkeep
+                }
             };
             
             // Check if consuming more power than produced

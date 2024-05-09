@@ -49,6 +49,13 @@ class InfoBar {
         k.scale(0.75),
     ]);
 
+    CMSText = k.add([
+        k.text("CMS v1.0"),
+        k.pos(1365, 5),
+        k.color(200, 200),
+        k.scale(0.75),
+    ]);
+
     //  Hashrate
     HashrateFrame = k.add([
         k.rect(180, 80),
@@ -106,43 +113,57 @@ class InfoBar {
 
     // Exchange
     ExchangeFrame = k.add([
-        k.rect(220, 80),
+        k.rect(420, 80),
         k.pos(570, 45),
         k.color(0, 0, 0),
         k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
-    ExchangeHeading = k.add([
+    ExchangeRateHeading = k.add([
         k.text("Exchange (BTC-USD)"),
         k.pos(580, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
-    ExchangeText = k.add([
+    ExchangeRateText = k.add([
         k.text("172.55k"),
         k.pos(580, 80),
         k.scale(1)
     ]);
 
+    ExchangeValueHeading = k.add([
+        k.text("BTC Value"),
+        k.pos(800, 55),
+        k.color(200, 200, 200),
+        k.scale(0.5)
+    ]);
+
+    ExchangeValueText = k.add([
+        k.text("100.50m"),
+        k.pos(800, 80),
+        k.scale(1)
+    ]);
+
+
     // Power
     PowerFrame = k.add([
         k.rect(210, 80),
-        k.pos(800, 45),
+        k.pos(1000, 45),
         k.color(0, 0, 0),
         k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     PowerHeading = k.add([
         k.text("Power"),
-        k.pos(810, 55),
+        k.pos(1010, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
     PowerText = k.add([
         k.text("100.55kW"),
-        k.pos(810, 80),
+        k.pos(1010, 80),
         k.scale(1)
     ]);
 
