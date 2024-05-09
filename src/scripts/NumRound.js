@@ -31,11 +31,11 @@ export function NumRound(num) {
     
     // Format the decimals
     if (number > 100) {
-        number = number.toFixed(1);
-    } else if (number > 10) {
         number = number.toFixed(2);
-    } else {
+    } else if (number > 10) {
         number = number.toFixed(3);
+    } else {
+        number = number.toFixed(4);
     }
 
     let formatted = `${num < 0 ? "-" : ""}${number}${metric}`;
