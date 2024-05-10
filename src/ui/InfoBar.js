@@ -58,7 +58,7 @@ class InfoBar {
 
     //  Hashrate
     HashrateFrame = k.add([
-        k.rect(180, 80),
+        k.rect(360, 80),
         k.pos(10, 45),
         k.color(0, 0, 0),
         k.outline(3, k.rgb(255, 255, 255)),
@@ -77,93 +77,128 @@ class InfoBar {
         k.scale(1)
     ]);
 
+    MiningRateHeading = k.add([
+        k.text("Mining Rate"),
+        k.pos(210, 55),
+        k.color(200, 200, 200),
+        k.scale(0.5)
+    ]);
+
+
+    MiningRateText = k.add([
+        k.text("100.55k"),
+        k.pos(210, 80),
+        k.scale(1)
+    ]);
+
+
     // Wallet
     WalletFrame = k.add([
         k.rect(360, 80),
-        k.pos(200, 45),
+        k.pos(380, 45),
         k.color(0, 0, 0),
         k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     WalletUSDHeading = k.add([
         k.text("USD Balance"),
-        k.pos(210, 55),
+        k.pos(390, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
     WalletUSDText = k.add([
         k.text("100.55k"),
-        k.pos(210, 80),
+        k.pos(390, 80),
         k.scale(1)
     ]);
 
     WalletCryptoHeading = k.add([
         k.text("Crypto Balance"),
-        k.pos(390, 55),
+        k.pos(580, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
     WalletCryptoText = k.add([
         k.text("100.55k"),
-        k.pos(390, 80),
+        k.pos(580, 80),
         k.scale(1)
     ]);
 
     // Exchange
     ExchangeFrame = k.add([
         k.rect(420, 80),
-        k.pos(570, 45),
+        k.pos(750, 45),
         k.color(0, 0, 0),
         k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     ExchangeRateHeading = k.add([
         k.text("Exchange (BTC-USD)"),
-        k.pos(580, 55),
+        k.pos(760, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
     ExchangeRateText = k.add([
         k.text("172.55k"),
-        k.pos(580, 80),
+        k.pos(760, 80),
         k.scale(1)
     ]);
 
     ExchangeValueHeading = k.add([
         k.text("BTC Value"),
-        k.pos(800, 55),
+        k.pos(1000, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
     ExchangeValueText = k.add([
         k.text("100.50m"),
-        k.pos(800, 80),
+        k.pos(1000, 80),
         k.scale(1)
     ]);
 
-
     // Power
     PowerFrame = k.add([
-        k.rect(210, 80),
-        k.pos(1000, 45),
+        k.rect(200, 80),
+        k.pos(1180, 45),
         k.color(0, 0, 0),
         k.outline(3, k.rgb(255, 255, 255)),
     ]);
 
     PowerHeading = k.add([
         k.text("Power"),
-        k.pos(1010, 55),
+        k.pos(1190, 55),
         k.color(200, 200, 200),
         k.scale(0.5)
     ]);
 
     PowerText = k.add([
         k.text("100.55kW"),
-        k.pos(1010, 80),
+        k.pos(1190, 80),
+        k.scale(1)
+    ]);
+
+    //Cycles
+    CycleFrame = k.add([
+        k.rect(200, 80),
+        k.pos(1390, 45),
+        k.color(0, 0, 0),
+        k.outline(3, k.rgb(255, 255, 255))
+    ]);
+
+    CycleHeading = k.add([
+        k.text("Cycle"),
+        k.pos(1400, 55),
+        k.color(200, 200, 200),
+        k.scale(0.5)
+    ]);
+
+    CycleText = k.add([
+        k.text("0000"),
+        k.pos(1400, 80),
         k.scale(1)
     ]);
 
@@ -184,17 +219,39 @@ class InfoBar {
                 bar.ExchangeText.color = k.rgb(255, 255, 255);
                 break;
             };
-        }
+        };
 
-        // Updating hashrate
-        bar.HashrateText.text = `${NumRound(game.mining.btc.hashrate)}k`
-
-        // Updating wallet
-        bar.WalletUSDText.text = `${NumRound(wallet.usd)}`
-        bar.WalletCryptoText.text = `${NumRound(wallet.crypto.btc)}`
-
-        // Updating power consumption
-        bar.PowerText.text = `${NumRound(game.power.consumption)}W`
+        bar.WalletUSDText.text = NumRound(wallet.usd);
+        switch (game.infobar.crypto) {
+            case "btc": {
+                bar.HashrateHeading.text = "BTC hashrate";
+                bar.HashrateText.text = NumRound(game.mining.btc.hashrate);
+                bar.MiningRateHeading.text = "BTC mining rate"
+                bar.MiningRateText.text = NumRound(game.mining.btc.miningRate);
+                bar.WalletCryptoHeading.text = "BTC balance";
+                bar.WalletCryptoText.text = NumRound(wallet.crypto.btc);
+                bar.ExchangeRateHeading.text = "Exchange (USD-BTC)";
+                bar.ExchangeRateText.text = NumRound(game.exchange.btc);
+                bar.ExchangeValueHeading.text = "Your BTC value";
+                bar.ExchangeValueText.text = NumRound(wallet.crypto.btc * game.exchange.btc);
+                break;
+            };
+            case "eth": {
+                bar.HashrateHeading.text = "ETH hashrate";
+                bar.HashrateText.text = NumRound(game.mining.eth.hashrate);
+                bar.MiningRateHeading.text = "ETH mining rate"
+                bar.MiningRateText.text = NumRound(game.mining.eth.miningRate);
+                bar.WalletCryptoHeading.text = "ETH balance";
+                bar.WalletCryptoText.text = NumRound(wallet.crypto.eth);
+                bar.ExchangeRateHeading.text = "Exchange (USD-ETH)";
+                bar.ExchangeRateText.text = NumRound(game.exchange.eth);
+                bar.ExchangeValueHeading.text = "Your ETH value";
+                bar.ExchangeValueText.text = NumRound(wallet.crypto.eth * game.exchange.eth);
+                break;
+            };
+        };
+        bar.PowerText.text = `${NumRound(game.power.consumption)}W`;
+        bar.CycleText.text = NumRound(game.mining.cycle);
 
         /*
         Changes the text color according to how much power is produced
@@ -211,7 +268,8 @@ class InfoBar {
             bar.PowerText.color = k.rgb(225, 184, 34);
         } else {
             bar.PowerText.color = k.rgb(255, 57, 34);
-        }
-    }
-}
+        };
+    };
+};
+
 export default InfoBar;

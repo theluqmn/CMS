@@ -3,10 +3,9 @@ import { gpu, ownedGPU, powerGenerator, ownedPowerGenerator } from "../data";
 
 export function Execute() {
     (async () => {
-        let cycle = 0;
 
         while (true) {
-            cycle++;
+            game.mining.cycle++;
 
             // Reset values for each cycle
             game.power.consumption = 0; game.power.production = 0;
@@ -62,23 +61,23 @@ export function Execute() {
 
             // Logging
             game.mining.btc.log.push({ // BTC mining
-                cycle: cycle,
+                cycle: game.mining.cycle,
                 hashrate: game.mining.btc.hashrate,
                 miningRate: game.mining.btc.miningRate
             });
             game.mining.eth.log.push({ // ETH mining
-                cycle: cycle,
+                cycle: game.mining.cycle,
                 hashrate: game.mining.eth.hashrate,
                 miningRate: game.mining.eth.miningRate
             });
             game.power.log.push({ // Power
-                cycle: cycle,
+                cycle: game.mining.cycle,
                 consumption: game.power.consumption,
                 production: game.power.production,
                 grid: game.power.grid
             });
 
-            console.log(`Cycle: ${cycle}\nBTC: ${game.mining.btc.miningRate} / ${wallet.crypto.btc}\nETH: ${game.mining.eth.miningRate} / ${wallet.crypto.eth}\nPower: ${game.power.production} / ${game.power.consumption}\nUSD: ${wallet.usd}\n`);
+            console.log(`Cycle: ${game.mining.cycle}\nBTC: ${game.mining.btc.miningRate} / ${wallet.crypto.btc}\nETH: ${game.mining.eth.miningRate} / ${wallet.crypto.eth}\nPower: ${game.power.production} / ${game.power.consumption}\nUSD: ${wallet.usd}\n`);
 
             // Each cycle happens every 1000ms (one second)
             await new Promise(r => setTimeout(r, 1000));

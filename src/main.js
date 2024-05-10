@@ -25,6 +25,7 @@ export const game = {
 		log: []
 	},
 	mining: {
+		cycle: 0,
 		btc: {
 			hashrate: 0,
 			difficulty: 21575,
@@ -44,6 +45,9 @@ export const game = {
 		btc: 51025,
 		eth: 9675,
 		log: []
+	},
+	infobar: {
+		crypto: "btc"
 	}
 };
 
@@ -63,6 +67,6 @@ Execute();
 gpuStore("nvidia", "geforce", "rtx4080");
 powerStore("diesel", "DG2");
 
-Exchange("usd", "btc", 5680);
+Exchange("usd", "eth", 5680);
 
 k.go("mining");
