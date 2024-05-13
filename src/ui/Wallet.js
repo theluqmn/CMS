@@ -59,13 +59,6 @@ export function WalletScene() {
             k.pos(20, 450),
             k.color(255, 255, 255)
         ]);
-
-        const totalOwned = k.add([
-            k.text("Total Owned"),
-            k.pos(20, 500),
-            k.color(255, 255, 255)
-        ]);
-
         // Buttons
         CoinBTC.onClick(() => {
             selectedCrypto = "BTC";

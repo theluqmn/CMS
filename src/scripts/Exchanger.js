@@ -8,13 +8,13 @@ This function is responsible for the action of the following:
 
 import { game, wallet } from "../main";
 
-export function Exchange(source, target, amount) {
+export function Exchange(base, target, amount) {
     let value = 0;
 
-    // Deduction at source
-    if (source == "btc" || source == "eth") {
-        wallet.crypto[source] -= amount;
-        value = amount * game.exchange[source]
+    // Deduction at base
+    if (base == "btc" || base == "eth") {
+        wallet.crypto[base] -= amount;
+        value = amount * game.exchange[base]
     } else {
         wallet.usd -= amount;
         value = amount;
@@ -28,9 +28,9 @@ export function Exchange(source, target, amount) {
         wallet.usd += value;
     }
 
-    console.log(`Exchange "${source}" ${amount} to "${target}" ${value} is successful`)
+    console.log(`Exchange "${base}" ${amount} to "${target}" ${value} is successful`)
     game.exchange.log.push({
-        source: source,
+        base: base,
         amount: amount,
         target: target
     })

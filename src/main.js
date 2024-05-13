@@ -55,7 +55,7 @@ export const game = {
 import { Execute } from './scripts/Execute';
 
 import { gpuStore, powerStore } from './scripts/Store';
-import { Exchange } from './scripts/Exchange';
+import { Exchange } from './scripts/Exchanger';
 
 // Importng UIs
 import { MiningScene } from './ui/Mining';
