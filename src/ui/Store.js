@@ -3,6 +3,7 @@ import InfoBar from "./InfoBar";
 export function StoreScene() {
     k.scene("store", () => {
         bar = new InfoBar();
+
         // Title
 
         k.add([

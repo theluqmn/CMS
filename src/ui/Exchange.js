@@ -7,6 +7,7 @@ import { Exchange } from "../scripts/Exchanger";
 export function ExchangeScene() {
     k.scene("exchange", () => {
         bar = new InfoBar();
+        bar.click();
 
         let BaseCurrency = "btc";
         let TargetCurrency = "usd";

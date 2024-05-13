@@ -4,6 +4,7 @@ import { ChangeScenes } from "../scripts/ChangeScenes";
 export function WalletScene() {
     k.scene("wallet", () => {
         bar = new InfoBar();
+
         let selectedCrypto = "BTC";
 
         // Title
