@@ -59,8 +59,11 @@ import { Exchange } from './scripts/Exchange';
 
 // Importng UIs
 import { MiningScene } from './ui/Mining';
+import { WalletScene } from './ui/Wallet';
+import { ExchangeScene } from './ui/Exchange';
+import { StoreScene } from './ui/Store';
 
-MiningScene();
+MiningScene(); WalletScene(); ExchangeScene(); StoreScene();
 
 // Run
 Execute();
@@ -69,4 +72,6 @@ powerStore("diesel", "DG2");
 
 Exchange("usd", "eth", 5680);
 
+
+// Start at mining scene
 k.go("mining");

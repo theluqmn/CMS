@@ -212,7 +212,7 @@ class InfoBar {
                 break;
             };
             case "wallet": {
-                bar.alletText.color = k.rgb(255, 255, 255);
+                bar.WalletText.color = k.rgb(255, 255, 255);
                 break;
             };
             case "exchange": {
