@@ -66,7 +66,6 @@ export function WalletScene() {
             k.color(255, 255, 255)
         ]);
 
-
         // Buttons
         CoinBTC.onClick(() => {
             selectedCrypto = "BTC";
