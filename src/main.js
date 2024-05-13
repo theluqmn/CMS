@@ -74,4 +74,4 @@ Exchange("usd", "eth", 5680);
 
 
 // Start at mining scene
-k.go("mining");
+k.go("wallet");

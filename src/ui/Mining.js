@@ -5,7 +5,6 @@ export function MiningScene() {
     k.scene("mining", () => {
         bar = new InfoBar();
         // Title
-
         k.add([
             k.text("Mining Scene"),
             k.pos(20, 150)
