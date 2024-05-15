@@ -1,5 +1,7 @@
 import InfoBar from "./InfoBar";
 import { ChangeScenes } from "../scripts/ChangeScenes";
+import { game, wallet } from "../main";
+import { NumRound } from "../scripts/NumRound";
 
 export function WalletScene() {
     k.scene("wallet", () => {
@@ -60,6 +62,7 @@ export function WalletScene() {
             k.pos(20, 450),
             k.color(255, 255, 255)
         ]);
+
         // Buttons
         CoinBTC.onClick(() => {
             selectedCrypto = "BTC";
@@ -80,11 +83,17 @@ export function WalletScene() {
                     CoinBTC.color = k.rgb(255, 255, 255);
                     CoinETH.color = k.rgb(200, 200, 200);
 
+                    CoinBalance.text = `Balance: ${NumRound(wallet.crypto.btc)}`;
+                    CoinValue.text = `Value: ${NumRound(wallet.crypto.btc * game.exchange.btc)}`;
+
                     break;
 
                 case "ETH":
                     CoinETH.color = k.rgb(255, 255, 255);
                     CoinBTC.color = k.rgb(200, 200, 200);
+
+                    CoinBalance.text = `Balance: ${NumRound(wallet.crypto.eth)}`;
+                    CoinValue.text = `Value: ${NumRound(wallet.crypto.eth * game.exchange.eth)}`;
 
                     break;
             };
