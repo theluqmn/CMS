@@ -72,6 +72,5 @@ powerStore("diesel", "DG2");
 
 Exchange("usd", "eth", 5680);
 
-
 // Start at mining scene
-k.go("wallet");
+k.go("mining");
