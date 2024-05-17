@@ -33,7 +33,7 @@ export function WalletScene() {
             k.rect(580, 55),
             k.pos(20, 250),
             k.color(0, 0, 0),
-            k.outline(3, k.rgb(200, 200, 200)),
+            k.outline(3, k.rgb(255, 255, 255)),
         ]);
 
         const CoinBTC = k.add([

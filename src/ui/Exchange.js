@@ -165,7 +165,7 @@ export function ExchangeScene() {
             k.rect(650, 690),
             k.pos(940, 200),
             k.color(0, 0, 0),
-            k.outline(3, k.rgb(200, 200, 200)),
+            k.outline(3, k.rgb(255, 255, 255)),
         ]);
 
         const ExchangeRatesBTCHeading = k.add([ // BTC exchange
