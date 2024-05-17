@@ -60,11 +60,13 @@ export function Execute() {
             wallet.crypto.eth += game.mining.eth.miningRate;
 
             // Logging
+            game.mining.btc.totalMined += game.mining.btc.miningRate;
             game.mining.btc.log.push({ // BTC mining
                 cycle: game.mining.cycle,
                 hashrate: game.mining.btc.hashrate,
                 miningRate: game.mining.btc.miningRate
             });
+            game.mining.eth.totalMined += game.mining.eth.miningRate;
             game.mining.eth.log.push({ // ETH mining
                 cycle: game.mining.cycle,
                 hashrate: game.mining.eth.hashrate,

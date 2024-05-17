@@ -1,5 +1,7 @@
 import InfoBar from "./InfoBar";
 import { ChangeScenes } from "../scripts/ChangeScenes";
+import { NumRound } from "../scripts/NumRound";
+import { game } from "../main";
 
 export function MiningScene() {
     k.scene("mining", () => {
@@ -106,7 +108,7 @@ export function MiningScene() {
 
         ChangeScenes();
         k.onUpdate(() => {
-            bar.refresh("mining")
+            bar.refresh("mining");
 
             // Based on the selected crypto
             switch (selectedCrypto) {
@@ -114,14 +116,22 @@ export function MiningScene() {
                     CoinBTC.color = k.rgb(255, 255, 255);
                     CoinETH.color = k.rgb(200, 200, 200);
 
+                    hashrateValue.text = NumRound(game.mining.btc.hashrate);
+                    miningRateValue.text = NumRound(game.mining.btc.miningRate);
+                    usdRateValue.text = `USD ${NumRound(game.mining.btc.miningRate * game.exchange.btc)}`;
+                    totalMinedValue.text = NumRound(game.mining.btc.totalMined);
                     break;
 
                 case "ETH":
                     CoinETH.color = k.rgb(255, 255, 255);
                     CoinBTC.color = k.rgb(200, 200, 200);
 
+                    hashrateValue.text = NumRound(game.mining.eth.hashrate);
+                    miningRateValue.text = NumRound(game.mining.eth.miningRate);
+                    usdRateValue.text = `USD ${NumRound(game.mining.eth.miningRate * game.exchange.eth)}`;
+                    totalMinedValue.text = NumRound(game.mining.eth.totalMined);
                     break;
             };
         });
     });
-}
+};
