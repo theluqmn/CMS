@@ -82,6 +82,17 @@ export function MiningScene() {
             k.pos(20, 550),
         ]);
 
+        const totalMinedHeading = k.add([ // Total Mined
+            k.text("Total Mined"),
+            k.scale(0.75),
+            k.pos(20, 620),
+        ]);
+
+        const totalMinedValue = k.add([
+            k.text("100k"),
+            k.pos(20, 650)
+        ]);
+
         // Trigger functions
         CoinBTC.onClick(() => {
             selectedCrypto = "BTC";
