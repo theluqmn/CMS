@@ -219,6 +219,10 @@ class InfoBar {
                 bar.ExchangeText.color = k.rgb(255, 255, 255);
                 break;
             };
+            case "store": {
+                bar.StoreText.color = k.rgb(255, 255, 255);
+                break;
+            };
         };
 
         bar.WalletUSDText.text = NumRound(wallet.usd);

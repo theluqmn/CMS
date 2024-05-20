@@ -61,7 +61,7 @@ export function WalletScene() {
             k.color(255, 255, 255)
         ]);
 
-        // Buttons
+        // Trigger functions
         CoinBTC.onClick(() => {
             selectedCrypto = "BTC";
             console.log("Changed selected coin to BTC");

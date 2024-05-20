@@ -190,6 +190,7 @@ export function ExchangeScene() {
             k.pos(950, 350),
         ]);
         
+        // Trigger functions
         BaseBTC.onClick(() => { BaseCurrency = "btc" });
         BaseETH.onClick(() => { BaseCurrency = "eth" });
         BaseUSD.onClick(() => { BaseCurrency = "usd" });
