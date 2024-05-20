@@ -5,7 +5,6 @@ import { game } from "../main";
 
 export function MiningScene() {
     k.scene("mining", () => {
-        bar = new InfoBar();
         let selectedCrypto = "BTC";
 
         // Mining Title
@@ -106,6 +105,7 @@ export function MiningScene() {
             console.log("Changed selected coin to ETH");
         });
 
+        bar = new InfoBar();
         ChangeScenes();
         k.onUpdate(() => {
             bar.refresh("mining");

@@ -5,8 +5,6 @@ import { NumRound } from "../scripts/NumRound";
 
 export function WalletScene() {
     k.scene("wallet", () => {
-        bar = new InfoBar();
-
         let selectedCrypto = "BTC";
 
         // Title
@@ -74,6 +72,7 @@ export function WalletScene() {
             console.log("Changed selected coin to ETH");
         });
 
+        bar = new InfoBar();
         ChangeScenes();
         k.onUpdate(() => {
             bar.refresh("wallet")
