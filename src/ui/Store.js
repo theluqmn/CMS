@@ -46,6 +46,14 @@ export function StoreScene() {
             k.area()
         ]);
 
+        // Store UI
+        const PrevButton = k.add([
+            k.rect(100, 560),
+            k.pos(20, 320),
+            k.color(0, 0, 0),
+            k.outline(3, k.rgb(255, 255, 255))
+        ])
+
         // Trigger functions
 
         SelectStoreGPU.onClick(() => {
