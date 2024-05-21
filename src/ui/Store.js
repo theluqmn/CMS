@@ -21,6 +21,7 @@ export function StoreScene() {
         const SelectStoreHeading = k.add([
             k.text("Select Store"),
             k.scale(0.75),
+            k.color(200, 200, 200),
             k.pos(20, 210)
         ]);
 

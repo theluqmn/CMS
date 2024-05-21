@@ -109,6 +109,7 @@ export function MiningScene() {
             k.text("Power Production"),
             k.scale(0.75),
             k.pos(640, 210),
+            k.color(200, 200, 200),
         ]);
 
         const PowerProductionValue = k.add([
@@ -120,6 +121,7 @@ export function MiningScene() {
             k.text("Power Consumption"),
             k.scale(0.75),
             k.pos(640, 310),
+            k.color(200, 200, 200),
         ]);
 
         const PowerConsumptionValue = k.add([
@@ -131,6 +133,7 @@ export function MiningScene() {
             k.text("Power Upkeep"),
             k.scale(0.75),
             k.pos(640, 410),
+            k.color(200, 200, 200),
         ]);
 
         const PowerUpkeepValue = k.add([
@@ -153,6 +156,7 @@ export function MiningScene() {
             k.text("Grid Price"),
             k.scale(0.75),
             k.pos(1240, 310),
+            k.color(200, 200, 200),
         ]);
 
         const GridPriceValue = k.add([
@@ -164,6 +168,7 @@ export function MiningScene() {
             k.text("Grid Expenses"),
             k.scale(0.75),
             k.pos(1240, 410),
+            k.color(200, 200, 200),
         ]);
 
         const GridExpensesValue = k.add([
