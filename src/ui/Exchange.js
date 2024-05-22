@@ -143,13 +143,13 @@ export function ExchangeScene() {
             k.rect(360, 55),
             k.pos(20, 825),
             k.color(0, 0, 0),
-            k.outline(3, k.rgb(255, 255, 255)),
+            k.outline(3, k.rgb(25, 2222, 76)),
         ]);
 
         const ExchangeButtonText = k.add([
             k.text("Exchange"),
             k.pos(25, 835),
-            k.color(255, 255, 255),
+            k.color(25, 222, 76),
             k.area()
         ]);
 
