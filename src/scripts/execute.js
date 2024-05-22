@@ -1,11 +1,15 @@
 import { game, wallet } from "../main";
 import { gpu, ownedGPU, powerGenerator, ownedPowerGenerator } from "../data";
+import { CryptoPricing } from "./CryptoPricing";
 
 export function Execute() {
     (async () => {
 
         while (true) {
             game.mining.cycle++;
+
+            // Crypto pricing
+            CryptoPricing();
 
             // Reset values for each cycle
             game.power.consumption = 0; game.power.production = 0;
