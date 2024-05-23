@@ -42,7 +42,7 @@ export const game = {
 		}
 	},
 	exchange: {
-		volatility: .5,
+		volatility: .25,
 		btc: 51025,
 		eth: 9675,
 		log: []

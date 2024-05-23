@@ -9,7 +9,7 @@ export function Execute() {
             game.mining.cycle++;
 
             // Crypto pricing
-            CryptoPricing();
+            // CryptoPricing();
 
             // Reset values for each cycle
             game.power.consumption = 0; game.power.production = 0;
