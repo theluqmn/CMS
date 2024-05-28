@@ -186,8 +186,29 @@ export const powerGenerator = {
             powerProduction: 10000,
             price: 2560,
             upkeep: 28,
-            environment: + 10,
+            environment: 10,
             model: "Solar Farm 10kW"
+        },
+        SF20: {
+            powerProduction: 20000,
+            price: 5300,
+            upkeep: 54,
+            environment: 20,
+            model: "Solar Farm 20kW"
+        },
+        SF50: {
+            powerProduction: 50000,
+            price: 12000,
+            upkeep: 120,
+            environment: 50,
+            model: "Solar Farm 50kW"
+        },
+        SF100: {
+            powerProduction: 100000,
+            price: 25000,
+            upkeep: 250,
+            environment: 100,
+            model: "Solar Farm 100kW"
         }
     }
 };
