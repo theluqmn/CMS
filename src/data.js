@@ -63,9 +63,78 @@ export const gpu = {
                 price: 1499,
                 company: "NVIDIA",
                 model: "GeForce RTX 3090",
-            }
+            },
+            // RTX 3080 Ti
+            rtx3080ti: {
+                hashrate: 100,
+                powerConsumption: 350,
+                price: 1099,
+                company: "NVIDIA",
+                model: "GeForce RTX 3080 Ti",
+            },
+            // RTX 3080
+            rtx3080: {
+                hashrate: 80,
+                powerConsumption: 320,
+                price: 799,
+                company: "NVIDIA",
+                model: "GeForce RTX 3080",
+            },
+            // RTX 3070 Ti
+            rtx3070ti: {
+                hashrate: 60,
+                powerConsumption: 290,
+                price: 599,
+                company: "NVIDIA",
+                model: "GeForce RTX 3070 Ti",
+            },
+            // RTX 3070
+            rtx3070: {
+                hashrate: 40,
+                powerConsumption: 150,
+                price: 399,
+                company: "NVIDIA",
+                model: "GeForce RTX 3070",
+            },
         },
         //Quaddro
+        quaddro: {
+            // RTX 6000 Ada
+            rtx6000ada:{
+                hashrate: 150,
+                powerConsumption: 300,
+                price: 4645,
+                company: "NVIDIA",
+                model: "Quadro RTX 6000 Ada",
+            },
+            // RTX 5000 Ada
+            rtx5000ada: 
+            {
+                hashrate: 120,
+                powerConsumption: 250,
+                price: 2495,
+                company: "NVIDIA",
+                model: "Quadro RTX 5000 Ada",
+            },
+            // RTX 4500 Ada
+            rtx4500ada: 
+            {
+                hashrate: 90,
+                powerConsumption: 210,
+                price: 1795,
+                company: "NVIDIA",
+                model: "Quadro RTX 4500 Ada",
+            },
+            // RTX 4000 Ada
+            rtx4000ada: 
+            {
+                hashrate: 60,
+                powerConsumption: 130,
+                price: 1095,
+                company: "NVIDIA",
+                model: "Quadro RTX 4000 Ada",
+            },
+        }
     },
 
     // AMD
